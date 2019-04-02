@@ -1,6 +1,25 @@
   
 <?php
     include_once('Produto.php');
+     $connection="mysql:host=127.0.0.1:3306;dbname=db_prod";
+     $db_user="root";
+     $db_pass="";
+    
+    
+
+    try { 
+        $pdo = new PDO($connection, $db_user, $db_pass); 
+        echo "Connected successfully";
+      } catch (PDOException $error) {
+        echo 'Connection error: ' . $error->getMessage();
+      }
+
+      $nome="Teste";
+      $preco="3.15";
+
+        $ins = "INSERT INTO produto (nome,  preco) VALUES ('$nome', '$preco')";
+
+    $exec = $pdo->exec($ins);
 
     $produtos = [];
 
